@@ -1,9 +1,18 @@
 
+import java.util.ArrayList;
+
+
 public class Controlador {
     // Atributos
     Vista miVista = new Vista ();
+    DirectorioDAO miModelo = new DirectorioDAO ();
+    
+    VistaIngreso vIngreso;
     
     public void iniciar () {
+        vIngreso = new VistaIngreso (this);
+        
+        miModelo.crearRepositorio();
         
         while (true) {
             miVista.mostrarMenu ();
@@ -22,6 +31,10 @@ public class Controlador {
     
     public void adicionar () {
         System.out.println ("Adicionando...");
+        //Estudiante e = miVista.leerEstudiante();
+        vIngreso.setVisible (true);
+        //miModelo.adicionarEstudiante(e);
+        
     }
     public void eliminar () {
         System.out.println ("Eliminando...");
@@ -34,6 +47,13 @@ public class Controlador {
     }
     public void mostrarTodos () {
         System.out.println ("Mostrando...");
+        ArrayList<Estudiante> listaEstudiantes = miModelo.obtenerTodos();
+        
+        miVista.mostrarTodos (listaEstudiantes);
+    }
+    
+    public void estudianteIngresado (Estudiante e) {
+        miModelo.adicionarEstudiante(e);
     }
     
 }

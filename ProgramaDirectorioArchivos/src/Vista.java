@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Vista {
@@ -28,6 +29,28 @@ public class Vista {
         System.out.println ("Cual opcion? ");
         int opcion = lector.nextInt ();
         return (opcion);
+    }
+    
+    public Estudiante leerEstudiante () {
+        System.out.println ("Codigo: ");
+        int codigo = lector.nextInt ();
+        lector.nextLine();
+        System.out.println ("Nombre: ");
+        String nombre = lector.nextLine();
+        System.out.println ("Programa: ");
+        String programa = lector.nextLine ();
+        
+        Estudiante e = new Estudiante (codigo, nombre, programa);
+        
+        return (e);
+    }
+    
+    public void mostrarTodos (ArrayList<Estudiante> listaEstudiantes) {
+        
+        for (Estudiante e : listaEstudiantes) {
+            mostrarEstudiante (e);
+        }
+        
     }
     
 }
