@@ -31,12 +31,6 @@ public class Vista {
         return (opcion);
     }
     
-    public int leerCodigo () {
-        System.out.println ("Cual es el código? ");
-        int codigo = lector.nextInt ();
-        return (codigo);      
-    }
-    
     public Estudiante leerEstudiante () {
         System.out.println ("Codigo: ");
         int codigo = lector.nextInt ();

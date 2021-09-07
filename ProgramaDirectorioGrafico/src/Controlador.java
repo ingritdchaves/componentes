@@ -7,7 +7,11 @@ public class Controlador {
     Vista miVista = new Vista ();
     DirectorioDAO miModelo = new DirectorioDAO ();
     
+    VistaIngreso vIngreso;
+    
     public void iniciar () {
+        vIngreso = new VistaIngreso (this);
+        
         miModelo.crearRepositorio();
         
         while (true) {
@@ -27,14 +31,16 @@ public class Controlador {
     
     public void adicionar () {
         System.out.println ("Adicionando...");
-        Estudiante e = miVista.leerEstudiante();
-        miModelo.adicionarEstudiante(e);
+        //Estudiante e = miVista.leerEstudiante();
+        vIngreso.setVisible (true);
+        //miModelo.adicionarEstudiante(e);
+        
     }
     public void eliminar () {
         System.out.println ("Eliminando...");
     }
     public void buscar () {
-        System.out.println ("Buscando...");      
+        System.out.println ("Buscando...");
     }
     public void actualizar () {
         System.out.println ("Actualizando...");
@@ -44,6 +50,10 @@ public class Controlador {
         ArrayList<Estudiante> listaEstudiantes = miModelo.obtenerTodos();
         
         miVista.mostrarTodos (listaEstudiantes);
+    }
+    
+    public void estudianteIngresado (Estudiante e) {
+        miModelo.adicionarEstudiante(e);
     }
     
 }
